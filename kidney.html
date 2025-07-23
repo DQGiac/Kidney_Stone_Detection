@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <title>DONT make this bad</title>
+    <style>
+        body {
+            font-family: Courier, monospace;
+        }
+        h1 {
+            margin-left: 30px;
+        }
+        
+        input::file-selector-button {
+            display: flex;
+            font-family: "Courier";
+            font-weight: bold;
+            color: dodgerblue;
+            padding: 1em;
+            border: 1px solid black;
+            border-radius: 15px;
+            margin-left: 50px;
+        }
+        /* input {
+            display: none;
+        } */
+    </style>
+</head>
+<body>
+    <h1>Bỏ ảnh CT:</h1>
+    <!-- <button type="button" id="CTimage" onclick="">Choose file</button> -->
+    <input type="file" id="CTimage" accept=".jpg">
+    <script>
+        const fileUploader = document.getElementById("CTimage")
+        reader = new FileReader()
+        fileUploader.addEventListener("change", (event) => {
+            // const files = document.createElement("img")
+            const files = event.target.files;
+            const file = files[0];
+
+            // Get the file object after upload and read the
+            // data as URL binary string
+            reader.readAsDataURL(file);
+            reader.addEventListener('load', (event) => {
+                img = document.createElement("img")
+                img.src = event.target.result
+                document.body.appendChild(img)
+            })
+        })
+    </script>
+    <br>
+    <h1>Bỏ file xét nghiệm</h1>
+    <input type="file" id="EXfile" accept=".csv">
+
+    <!-- <script>
+        const fileUploader = document.getElementById('image');
+        reader = new FileReader()
+        fileUploader.addEventListener('change', (event) => {
+            const files = event.target.files;
+            const file = files[0];
+
+            // Get the file object after upload and read the
+            // data as URL binary string
+            reader.readAsDataURL(file);
+
+            // Once loaded, do something with the string
+            reader.addEventListener('load', (event) => {
+                // Here we are creating an image tag and adding
+                // an image to it.
+                const img = document.createElement('img');
+                // imageGrid.appendChild(img);
+                img.src = event.target.result;
+                document.body.appendChild(img)
+                p = document.createElement("p")
+                p.innerText = "Input another file here"
+                document.body.appendChild(p)
+                inp = document.createElement("input")
+                inp.type = "file"
+                inp.id = "file"
+                inp.accept = ".csv"
+                document.body.appendChild(inp)
+            });
+        });
+    </script> -->
+    
+</body>
